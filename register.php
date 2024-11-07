@@ -8,7 +8,7 @@
 </head>
 <body id = "register_body">
     <div id = "register_container">
-        <form id = "register_form" action="" method = "POST">
+        <form id = "register_form" action="register_process.php" method = "POST">
             <h2>Register</h2>
              <label for="email">Email</label>
              <input type="text" id = "email" name = "email" required>
