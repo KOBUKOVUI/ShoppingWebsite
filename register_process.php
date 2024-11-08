@@ -1,6 +1,6 @@
 <?php
 session_start();
-require db_connect.php;
+require 'db_connect.php';
 
 //lấy thông tin từ form
 //dùng html specialchars và trim để tránh xss
@@ -12,12 +12,13 @@ $phone_number = htmlspecialchars(trim($_POST['phone_number']));
 
 //kiểm tra nhập lại mật khẩu
 if($password !== $confirm_password){
-    die("Passwords do not match"); 
-    header("Location: register.php");
+   $_SESSION['error_message'] = "Password do not match";
+   header("Location: register.php");
+   exit();
 }
 
 //mã hóa mật khẩu
-$hashed_password = password_hash($password, PASSWORD_DEFAULT) // dùng bcrypt có thêm salt
+$hashed_password = password_hash($password, PASSWORD_DEFAULT); // dùng bcrypt có thêm salt
 
 //ktra số dt và email đã tồn tại chưa
 // dùng prepare statement tránh sql injection
@@ -27,13 +28,15 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if($result->num_rows > 0){
-    die("Email or phone number already exists.");
+    $_SESSION['error_message'] = "Email or phone number already exists.";
+    header("Location: register.php");
+    exit();
 }
 
 //tạo mã OTP (6 chữ số)
 $otp_code = rand(100000, 999999);
 
-//Thời gian hết hạn của OTP (ví dụ 5 phút)
+//Thời gian hết hạn của OTP là 5p
 $otp_expiration = date("Y-m-d H:i:s", strtotime("+5 minutes"));
 
 //Lưu thông tin người dùng và OTP vào cơ sở dữ liệu bằng prepared statement
@@ -42,18 +45,23 @@ $stmt = $conn->prepare("INSERT INTO users (email, password, phone_number, name, 
 $stmt->bind_param("ssssss", $email, $hashed_password, $phone_number, $name, $otp_code, $otp_expiration);
 if ($stmt->execute()) {
     // Lưu thông tin vào session khi đăng ký thành công
-    $_SESSION['user_id'] = $conn->insert_id;  // Lưu ID người dùng vào session
-    $_SESSION['email'] = $email;  // Lưu email vào session
-    $_SESSION['role'] = 'user';  // Gán role mặc định là user
+    $_SESSION['user_id'] = $conn->insert_id;  
+    $_SESSION['email'] = $email;  
+    $_SESSION['role'] = 'user';  
 
 // gửi mail xác nhận OTP
 $subject = "Your OTP Code";
     $message = "Your OTP code is: " . $otp_code;
-    $headers = "From: no-reply@example.com";
+    $headers = "From: B2C-Shoe Shop";
 
     // Gửi email
     if (mail($email, $subject, $message, $headers)) {
-        echo "Registration successful. OTP has been sent to your email.";
+        //thông báo gửi otp thành công
+        echo "<script>
+            alert('Registration successful. OTP has been sent to your email.');
+                window.location.href = 'otp.php';
+            </script>";
+    exit();
     } else {
         echo "Error sending OTP.";
     }

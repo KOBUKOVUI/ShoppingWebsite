@@ -1,36 +1,55 @@
 <?php
-// Kết nối cơ sở dữ liệu
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "your_database";
+session_start();
+require 'db_connect.php';
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+//ktra người dùng đăng ký chưa 
 
-// Kiểm tra kết nối
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if(!isset($_SESSION['user_id'])){
+    header("Location: register.php");
+    exit();
 }
 
-// Lấy thông tin OTP từ form
-$email = $_POST['email'];
-$otp_code = $_POST['otp_code'];
+//ktra otp
 
-// Kiểm tra OTP trong cơ sở dữ liệu
-$sql = "SELECT * FROM users WHERE email = '$email' AND otp_code = '$otp_code' AND otp_expiration > NOW()";
-$result = $conn->query($sql);
+//ktra dùng phương thức Post
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    // Lấy mã OTP từ form
+    $otp_code = htmlspecialchars(trim($_POST['otp_code']));
 
-if ($result->num_rows > 0) {
-    // OTP hợp lệ, xác nhận tài khoản
-    $update_sql = "UPDATE users SET is_verified = 1 WHERE email = '$email'";
-    if ($conn->query($update_sql) === TRUE) {
-        echo "Account verified successfully!";
+    // Lấy user_id từ session để xác thực OTP
+    $user_id = $_SESSION['user_id'];
+
+    //ktra mã otp lưu trong csdl 
+    $stmt = $conn->prepare("SELECT otp_code, otp_expiration FROM users WHERE id = ?");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+
+    if ($user) {
+        // Kiểm tra mã OTP có khớp và còn hạn không
+        if ($user['otp_code'] == $otp_code && strtotime($user['otp_expiration']) > time()) {
+            // Xác minh thành công -> Cập nhật thông tin người dùng
+            $stmt = $conn->prepare("UPDATE users SET otp_code = NULL, otp_expiration = NULL WHERE id = ?");
+            $stmt->bind_param("i", $user_id);
+            $stmt->execute();
+
+            // Cập nhật session để đánh dấu người dùng đã xác minh
+            $_SESSION['verified'] = true;
+
+            // Chuyển hướng trang home
+            header("Location: home.php");
+            exit();
+        } else {
+            
+            $_SESSION['error_message'] = "Invalid or expired OTP.";
+            header("Location: otp.php");
+    exit();
+        }
     } else {
-        echo "Error verifying account.";
+        $_SESSION['error_message'] = "OTP eror.";
+        header("Location: otp.php");
     }
-} else {
-    echo "Invalid OTP or OTP expired.";
 }
-
-$conn->close();
 ?>
+

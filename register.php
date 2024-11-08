@@ -4,12 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/login_register_styles.css">
 </head>
 <body id = "register_body">
     <div id = "register_container">
         <form id = "register_form" action="register_process.php" method = "POST">
             <h2>Register</h2>
+            //ktra các lỗi xảy ra
+            <?php
+            session_start();
+            if (isset($_SESSION['error_message'])) {
+                echo "<p style='color: red; font-size: 25px;'>" . $_SESSION['error_message'] . "</p>";
+                unset($_SESSION['error_message']);  // Xóa thông báo lỗi
+            }
+            ?>
              <label for="email">Email</label>
              <input type="text" id = "email" name = "email" required>
              <br>

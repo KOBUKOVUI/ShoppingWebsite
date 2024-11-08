@@ -1,0 +1,68 @@
+#otp_body {
+    font-family: monospace, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: black;
+    background-image: url('https://mir-s3-cdn-cf.behance.net/projects/404/541769188470807.Y3JvcCwxNTgwLDEyMzYsMTEsMA.jpg');
+}
+
+#otp_container {
+    width: 600px;
+    padding: 20px;
+    background-color: rgb(54, 52, 52);
+    border-radius: 45px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: #333
+}
+
+#otp_container h2 {
+    margin-bottom: 5px;
+    color: #71cf71;
+    font-size: 60px;
+}
+
+#otp_container label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 30px;
+    color: #57bd57;
+    text-align: left;
+}
+#otp_container input[type="text"] {
+    width: 90%;               
+    padding: 15px;            
+    margin-bottom: 20px;      
+    border: 1px solid #57bd57; 
+    border-radius: 8px;       
+    background-color: #fff;   
+    font-size: 28px;          
+    color: #333;              
+    text-align: center;      
+    outline: none;            
+}
+
+#otp_container button {
+    width: 55%;
+    padding: 10px;
+    background-color: #5cb85c;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#otp_container button:hover {
+    background-color: #4cae4c;
+}
+
+#otp_container p {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #c9bfbf;
+}
+
