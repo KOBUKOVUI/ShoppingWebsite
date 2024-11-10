@@ -14,12 +14,12 @@ if(!isset($_SESSION['user_id'])){
 //ktra dùng phương thức Post
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     // Lấy mã OTP từ form
-    $otp_code = htmlspecialchars(trim($_POST['otp_code']));
+    $otp_code = htmlspecialchars(trim($_POST['otp_code']));//dùng html specialchars và trim để tránh xss
 
     // Lấy user_id từ session để xác thực OTP
     $user_id = $_SESSION['user_id'];
 
-    //ktra mã otp lưu trong csdl 
+    //ktra mã otp lưu trong csdl, dùng preapare tránh sql injection
     $stmt = $conn->prepare("SELECT otp_code, otp_expiration FROM users WHERE id = ?");
     $stmt->bind_param("i", $user_id);
     $stmt->execute();
@@ -38,8 +38,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $_SESSION['verified'] = true;
 
             // Chuyển hướng trang home
-            header("Location: home.php");
-            exit();
+            echo "<script>
+            alert('Verified OTP successfully.');
+                window.location.href = 'home.php';
+            </script>";
+        exit();
         } else {
             
             $_SESSION['error_message'] = "Invalid or expired OTP.";

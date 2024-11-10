@@ -3,12 +3,11 @@ session_start();
 require 'db_connect.php';
 
 //lấy thông tin từ form
-//dùng html specialchars và trim để tránh xss
-$email = htmlspecialchars(trim($_POST['email']));
-$name = htmlspecialchars(trim($_POST['name']));  
+$email = htmlspecialchars(trim($_POST['email']));//dùng html specialchars và trim để tránh xss
+$name = htmlspecialchars(trim($_POST['name']));  //dùng html specialchars và trim để tránh xss
 $password = $_POST['password'];
 $confirm_password = $_POST['confirm_password'];
-$phone_number = htmlspecialchars(trim($_POST['phone_number']));
+$phone_number = htmlspecialchars(trim($_POST['phone_number']));//dùng html specialchars và trim để tránh xss
 
 //kiểm tra nhập lại mật khẩu
 if($password !== $confirm_password){
@@ -17,16 +16,24 @@ if($password !== $confirm_password){
    exit();
 }
 
+// kiểm tra điều kiện đặt mật khẩu (Chữ hoa, có số, ký tự đặc biệt tối thiểu 8 kí tự)
+if (!preg_match('/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', $password)) {
+    $_SESSION['error_message'] = "Password must contain at least one uppercase letter, one number, one special character, and be at least 8 characters long.";
+    header("Location: register.php");
+    exit();
+}
+
+
 //mã hóa mật khẩu
 $hashed_password = password_hash($password, PASSWORD_DEFAULT); // dùng bcrypt có thêm salt
 
 //ktra số dt và email đã tồn tại chưa
-// dùng prepare statement tránh sql injection
-$stmt = $conn->prepare ("SELECT * FROM users WHERE email = ? OR phone_number = ?");
+$stmt = $conn->prepare ("SELECT * FROM users WHERE email = ? OR phone_number = ?"); //dùng prepare statement tránh sql injection
 $stmt->bind_param("ss", $email, $phone_number);  // 'ss' tương ứng với 2 tham số kiểu string
 $stmt->execute();
 $result = $stmt->get_result();
 
+//ktra email đã tồn tại chưa
 if($result->num_rows > 0){
     $_SESSION['error_message'] = "Email or phone number already exists.";
     header("Location: register.php");
@@ -49,18 +56,17 @@ if ($stmt->execute()) {
     $_SESSION['email'] = $email;  
     $_SESSION['role'] = 'user';  
 
-// gửi mail xác nhận OTP
+//gửi mail xác nhận OTP
 $subject = "Your OTP Code";
     $message = "Your OTP code is: " . $otp_code;
     $headers = "From: B2C-Shoe Shop";
 
-    // Gửi email
     if (mail($email, $subject, $message, $headers)) {
         //thông báo gửi otp thành công
         echo "<script>
             alert('Registration successful. OTP has been sent to your email.');
                 window.location.href = 'otp.php';
-            </script>";
+            </script>";+
     exit();
     } else {
         echo "Error sending OTP.";

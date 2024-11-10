@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" href="css/login_register_styles.css">
+    <link rel="icon" href="icon/edit.png" type = "image/x-icon">
 </head>
 <body id = "register_body">
     <div id = "register_container">
         <form id = "register_form" action="register_process.php" method = "POST">
             <h2>Register</h2>
-            //ktra các lỗi xảy ra
+            <!--ktra các lỗi xảy ra -->
             <?php
             session_start();
             if (isset($_SESSION['error_message'])) {
-                echo "<p style='color: red; font-size: 25px;'>" . $_SESSION['error_message'] . "</p>";
+                echo "<p style='color: red; font-size: 15px;'>" . $_SESSION['error_message'] . "</p>";
                 unset($_SESSION['error_message']);  // Xóa thông báo lỗi
             }
             ?>
@@ -23,7 +24,14 @@
              <br>
              <label for="name">Name</label>
              <input type="text" id = "name" name = "name">
-             <label for="password">Password</label>
+             <label for="password">Password </label>
+             <label for="password_help"> <ul id="password_help">
+                    <li style="font-size: 14px; color: #f0ad4e; margin-top: 5px; text-align: left; list-style-type: disc; padding-left: 20px;">Must contain at least one uppercase letter.</li>
+                    <li style="font-size: 14px; color: #f0ad4e; margin-top: 5px; text-align: left; list-style-type: disc; padding-left: 20px;">Must contain at least one number.</li>
+                    <li style="font-size: 14px; color: #f0ad4e; margin-top: 5px; text-align: left; list-style-type: disc; padding-left: 20px;">Must contain at least one special character.</li>
+                    <li style="font-size: 14px; color: #f0ad4e; margin-top: 5px; text-align: left; list-style-type: disc; padding-left: 20px;">Must be at least 8 characters long.</li>
+                </ul></label>
+             <br>
              <input type="password" id = "password" name = "password" required>
              <br>
              <label for="confirm_password">Confirm password</label>
