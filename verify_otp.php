@@ -47,11 +47,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             
             $_SESSION['error_message'] = "Invalid or expired OTP.";
             header("Location: otp.php");
-    exit();
+            exit();
         }
     } else {
         $_SESSION['error_message'] = "OTP eror.";
         header("Location: otp.php");
+        exit();
     }
 }
 ?>

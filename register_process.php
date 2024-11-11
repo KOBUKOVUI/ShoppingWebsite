@@ -8,6 +8,23 @@ $name = htmlspecialchars(trim($_POST['name']));  //dùng html specialchars và t
 $password = $_POST['password'];
 $confirm_password = $_POST['confirm_password'];
 $phone_number = htmlspecialchars(trim($_POST['phone_number']));//dùng html specialchars và trim để tránh xss
+$recaptcha_response = $_POST['g-recaptcha-response']; //lấy recaptcha
+
+//ktra recaptcha
+$secret_key = '6LcWmnsqAAAAABIRsSdRmzsd5qVCZ4uaL3iY6w-h';  
+$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret_key&response=$recaptcha_response");
+$response_keys = json_decode($response, true);
+if (empty($recaptcha_response)) {// Ktra đã điền reCAPTCHA chưa
+    $_SESSION['error_message'] = "Please complete the reCAPTCHA.";
+    header("Location: register.php");
+    exit();
+}
+if(intval($response_keys["success"]) !== 1) { //ktra lỗi reCaptcha
+    $_SESSION['error_message'] = "Please verify that you are not a robot.";
+    header("Location: register.php");
+    exit();
+} 
+
 
 //kiểm tra nhập lại mật khẩu
 if($password !== $confirm_password){
@@ -23,6 +40,25 @@ if (!preg_match('/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', $
     exit();
 }
 
+//ktra đầu vào của email 
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $_SESSION['error_message'] = "Invalid email format.";
+    header("Location: register.php");
+    exit();
+}
+
+//ktra đầu vào của phone number 
+if (!preg_match('/^\+?\d{10,15}$/', $phone_number)) {
+    $_SESSION['error_message'] = "Invalid phone number format.";
+    header("Location: register.php");
+    exit();
+}
+//ktra mật khẩu k chứa tên người dùng hay email 
+if (stripos($password, $email) !== false || stripos($password, $name) !== false) {
+    $_SESSION['error_message'] = "Password cannot contain your email or name.";
+    header("Location: register.php");
+    exit();
+}
 
 //mã hóa mật khẩu
 $hashed_password = password_hash($password, PASSWORD_DEFAULT); // dùng bcrypt có thêm salt
@@ -32,8 +68,6 @@ $stmt = $conn->prepare ("SELECT * FROM users WHERE email = ? OR phone_number = ?
 $stmt->bind_param("ss", $email, $phone_number);  // 'ss' tương ứng với 2 tham số kiểu string
 $stmt->execute();
 $result = $stmt->get_result();
-
-//ktra email đã tồn tại chưa
 if($result->num_rows > 0){
     $_SESSION['error_message'] = "Email or phone number already exists.";
     header("Location: register.php");
@@ -52,12 +86,13 @@ $stmt = $conn->prepare("INSERT INTO users (email, password, phone_number, name, 
 $stmt->bind_param("ssssss", $email, $hashed_password, $phone_number, $name, $otp_code, $otp_expiration);
 if ($stmt->execute()) {
     // Lưu thông tin vào session khi đăng ký thành công
+    session_regenerate_id(true); // Tạo session mới để bảo vệ session cũ, tránh session hijacking
     $_SESSION['user_id'] = $conn->insert_id;  
     $_SESSION['email'] = $email;  
     $_SESSION['role'] = 'user';  
 
 //gửi mail xác nhận OTP
-$subject = "Your OTP Code";
+    $subject = "Your OTP Code";
     $message = "Your OTP code is: " . $otp_code;
     $headers = "From: B2C-Shoe Shop";
 
@@ -66,8 +101,8 @@ $subject = "Your OTP Code";
         echo "<script>
             alert('Registration successful. OTP has been sent to your email.');
                 window.location.href = 'otp.php';
-            </script>";+
-    exit();
+            </script>";
+        exit();
     } else {
         echo "Error sending OTP.";
     }

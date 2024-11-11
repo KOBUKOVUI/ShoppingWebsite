@@ -6,6 +6,8 @@
     <title>Register</title>
     <link rel="stylesheet" href="css/login_register_styles.css">
     <link rel="icon" href="icon/edit.png" type = "image/x-icon">
+    <!-- add capcha -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body id = "register_body">
     <div id = "register_container">
@@ -39,8 +41,13 @@
              <br>
              <label for="number">Phone number</label>
              <input type="text" id = "phone_number" name = "phone_number" required>
-            <button type="submit">Register</button>
-            <p>Already have an account <a href="index.php">Login now</a></p>
+             <br>
+             <div style="display: flex; align-items: center;">
+             <label for="captcha" style = "font-size: 15px">Verify that you are not a robot:</label>
+             <div class="g-recaptcha" data-sitekey="6LcWmnsqAAAAAHCiHq6DoK7T74iYmHe54khajjZ8" style ="transform: scale(0.8); transform-origin: 0 0; margin: 0 auto; "></div>
+             </div>
+             <button type="submit">Register</button>
+             <p>Already have an account <a href="index.php">Login now</a></p>
 
         </form>
     </div>
