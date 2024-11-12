@@ -1,5 +1,8 @@
 <?php
 session_start();
+// Cấu hình bảo mật session
+ini_set('session.cookie_secure', 1); // Chỉ cho phép cookie qua HTTPS
+ini_set('session.cookie_httponly', 1); // Ngăn truy cập cookie qua JavaScript
 require 'db_connect.php';
 
 //ktra người dùng đăng ký chưa 

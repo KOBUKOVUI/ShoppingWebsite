@@ -17,7 +17,7 @@
             <?php
             session_start();
             if (isset($_SESSION['error_message'])) {
-                echo "<p style='color: red; font-size: 15px;'>" . $_SESSION['error_message'] . "</p>";
+                echo "<p style='color: red; font-size: 15px; text-align: left;'>" . $_SESSION['error_message'] . "</p>";
                 unset($_SESSION['error_message']);  // Xóa thông báo lỗi
             }
             ?>
