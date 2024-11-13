@@ -122,6 +122,7 @@ if ($result->num_rows == 1) {
                 $errors[] = "OTP update error";
             }
         } else {
+            $_SESSION['verified'] = true;
             $_SESSION['role'] = 'admin';
             header("Location: admin_dashboard/admin_dashboard.php");
             exit();

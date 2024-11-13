@@ -6,10 +6,14 @@ ini_set('session.cookie_samesite', 'Strict'); // Cấm gửi cookie trong các y
 session_start();
 
 // Kiểm tra xem người dùng đã đăng nhập chưa
-if (isset($_SESSION['user_id']) && $_SESSION['verified'] == true) {
-    // Nếu người dùng đã đăng nhập, chuyển hướng tới trang home
-    header("Location: home.php");
-    exit(); 
+if (isset($_SESSION['verified']) && $_SESSION['verified'] == true) {
+    if (($_SESSION['role'] == 'admin') ) {
+        // Nếu là admin đã đăng nhập, chuyển hướng tới trang home
+        header("Location: admin_dashboard/admin_dashboard.php");
+        exit(); 
+    }else{
+        header("Location: home.php"); // Nếu là ng dùng đến home
+    }
 }
 ?>
 <!DOCTYPE html>
