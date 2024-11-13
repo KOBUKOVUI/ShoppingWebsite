@@ -1,0 +1,142 @@
+/* Đặt font chữ và màu nền cho toàn bộ trang */
+body {
+    font-family: monospace;
+    background-color: rgb(232, 230, 230);
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background-color: #4CAF50;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 50px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 10px; /* Thêm padding để tạo khoảng cách cho viền */
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Viền mờ với độ trong suốt */
+    border-radius: 5px; /* Bo góc của viền */
+    transition: all 0.3s ease; /* Thêm hiệu ứng chuyển động khi hover */
+}
+
+/* Định dạng khi di chuột qua các thẻ a */
+header nav a:hover {
+    text-decoration: underline;
+    background-color: rgba(255, 255, 255, 0.1); /* Nền mờ nhẹ khi di chuột */
+    border-color: rgba(255, 255, 255, 0.8); /* Tăng độ sáng của viền khi hover */
+}
+/* log out ở header */
+#header_logout {
+    color: red;
+}
+/* Main nội dung */
+main {
+    padding: 20px;
+}
+
+main h2 {
+    color: #333;
+    font-size: 40px;
+}
+
+main p, main ul {
+    margin-top: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin: 10px 0;
+}
+
+ul li a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+#footer_links a , 
+#footer_social a {
+    color: aqua;
+}
+
+/* Định dạng chung cho bảng */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse; /* Kết hợp các viền lại với nhau */
+    background-color: white; /* Màu nền trắng cho bảng */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Thêm hiệu ứng đổ bóng */
+    border-radius: 10px; 
+}
+
+/* Định dạng cho các ô thẻ header (th) */
+th {
+    background-color: black ; /* Màu nền của header */
+    color: white; /* Màu chữ trong header */
+    padding: 12px; /* Khoảng cách giữa chữ và viền ô */
+    text-align: left; /* Canh trái nội dung */
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Định dạng cho các ô */
+td {
+    padding: 12px; /* Khoảng cách giữa chữ và viền ô */
+    text-align: left; /* Canh trái nội dung */
+    border-bottom: 1px solid #ddd; /* Viền dưới cho các ô dữ liệu */
+    font-size: 20px;
+    font-family: monospace;
+    color: #333;
+}
+
+/* Định dạng cho các cột khi cần */
+td, th {
+    border-right: 1px solid #ddd; /* Viền giữa các cột */
+}
+
+/* Bỏ viền phải của cột cuối */
+td:last-child, th:last-child {
+    border-right: none;
+}
+
+/* Định dạng chung cho phần tiêu đề */
+h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-top: 30px;
+}
+
+.quantity {
+    font-size: 30px;
+}
+
+
