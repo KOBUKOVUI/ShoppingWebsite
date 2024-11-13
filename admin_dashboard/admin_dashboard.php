@@ -1,5 +1,9 @@
 <?php
+ini_set('session.cookie_secure', 1); // chỉ cho phép cookie qua HTTPS
+ini_set('session.cookie_httponly', 1); // không cho phép truy cập cookie qua JavaScript
+ini_set('session.cookie_samesite', 'Strict'); // chỉ gửi cookie trong cùng một trang web
 session_start();
+
 // Kiểm tra xem người dùng có phải là admin không
 if ($_SESSION['role'] != 'admin') {
     header("Location: index.php");
