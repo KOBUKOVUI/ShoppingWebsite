@@ -6,7 +6,7 @@ session_start();
 
 // Kiểm tra xem người dùng có phải là admin không
 if ($_SESSION['role'] != 'admin') {
-    header("Location: index.php");
+    header("Location: /ShoppingWebsite/index.php");
     exit();
 }
 
@@ -35,7 +35,7 @@ $total_users = $row['total_users'];
             <a href="user_management.php">Quản lý người dùng</a>
             <a href="product_management.php">Quản lý sản phẩm</a>
             <a href="orders.php">Quản lý đơn hàng</a>
-            <a id = 'header_logout' href="logout.php">Đăng xuất</a>
+            <a id = 'header_logout' href="../logout.php">Đăng xuất</a>
         </nav>
     </header>
 

@@ -1,3 +1,17 @@
+<?php
+// Cấu hình bảo mật session
+ini_set('session.cookie_secure', 1); // Chỉ cho phép cookie qua HTTPS
+ini_set('session.cookie_httponly', 1); // Ngăn truy cập cookie qua JavaScript
+ini_set('session.cookie_samesite', 'Strict'); // Cấm gửi cookie trong các yêu cầu từ trang web khác
+session_start();
+
+// Kiểm tra xem người dùng đã đăng nhập chưa
+if (isset($_SESSION['user_id']) && $_SESSION['verified'] == true) {
+    // Nếu người dùng đã đăng nhập, chuyển hướng tới trang home
+    header("Location: home.php");
+    exit(); 
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +28,6 @@
         <h2>Login</h2>
         <!--ktra các lỗi xảy ra -->
         <?php
-            session_start();
             if (isset($_SESSION['error_message'])) {
                 echo "<p style='color: red; font-size: 15px; text-align: left;'>" . $_SESSION['error_message'] . "</p>";
                 unset($_SESSION['error_message']);  // Xóa thông báo lỗi

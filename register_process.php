@@ -1,8 +1,9 @@
 <?php
-session_start();
 // Cấu hình bảo mật session
 ini_set('session.cookie_secure', 1); // Chỉ cho phép cookie qua HTTPS
 ini_set('session.cookie_httponly', 1); // Ngăn truy cập cookie qua JavaScript
+ini_set('session.cookie_samesite', 'Strict'); // Cấm gửi cookie trong các yêu cầu từ trang web khác
+session_start();
 require 'db_connect.php';
 
 //lấy thông tin từ form

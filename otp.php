@@ -13,6 +13,7 @@
             <h2>Verify OTP</h2>
             <!--Thông báo các lỗi trong quá trình kiểm tra -->
             <?php
+            
             session_start();
             if (isset($_SESSION['error_message'])) {
                 echo "<p style='color: red; font-size: 25px;'>" . $_SESSION['error_message'] . "</p>";
