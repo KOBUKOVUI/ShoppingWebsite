@@ -50,33 +50,6 @@ main {
     text-align: center;
 }
 
-main h2 {
-    color: #333;
-    font-size: 40px;
-}
-
-main p, main ul {
-    margin-top: 10px;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-ul li {
-    margin: 10px 0;
-}
-
-ul li a {
-    color: #4CAF50;
-    text-decoration: none;
-}
-
-ul li a:hover {
-    text-decoration: underline;
-}
-
 /* Footer */
 footer {
     background-color: #333;
@@ -90,7 +63,7 @@ footer {
     color: aqua;
 }
 
-/* Định dạng chung cho bảng */
+/* Table Styling */
 /* Định dạng chung cho bảng */
 table {
     width: 80%;
@@ -130,10 +103,18 @@ td, th {
 td:last-child, th:last-child {
     border-right: none;
 }
-
-.quantity {
-    font-size: 30px;
+/* button */
+form button {
+    width: 40%;
+    padding: 10px;
+    background-color: #5cb85c;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-
-
+form button:hover {
+    background-color: #4cae4c;
+}

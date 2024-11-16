@@ -42,6 +42,7 @@ $total_users = $row['total_users'];
     <main>
         <section>
             <h2>Basic Statistics</h2>
+            
             <table>
                 <thead>
                     <tr>
@@ -50,7 +51,7 @@ $total_users = $row['total_users'];
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>s
+                    <tr>
                         <td>Number of Accounts</td>
                         <td class ="quantity"><?php echo $total_users; ?></td>
                     </tr>
