@@ -8,7 +8,7 @@ session_start();
 // Kiểm tra xem người dùng đã đăng nhập chưa
 if (isset($_SESSION['verified']) && $_SESSION['verified'] == true) {
     if (($_SESSION['role'] == 'admin') ) {
-        // Nếu là admin đã đăng nhập, chuyển hướng tới trang home
+        // Nếu là admin đã đăng nhập, chuyển hướng tới trang admin dashboard
         header("Location: admin_dashboard/admin_dashboard.php");
         exit(); 
     }else{

@@ -32,34 +32,34 @@ $total_users = $row['total_users'];
         <h1>Admin Dashboard</h1>
         <nav>
             <a href="admin_dashboard.php">Home</a>
-            <a href="user_management.php">Quản lý người dùng</a>
-            <a href="product_management.php">Quản lý sản phẩm</a>
-            <a href="orders.php">Quản lý đơn hàng</a>
-            <a id = 'header_logout' href="../logout.php">Đăng xuất</a>
+            <a href="user_management.php">User management </a>
+            <a href="product_management.php">Product management</a>
+            <a href="orders.php">Order management</a>
+            <a id = 'header_logout' href="../logout.php">Log out</a>
         </nav>
     </header>
 
     <main>
         <section>
-            <h2>Thống kê cơ bản</h2>
+            <h2>Basic Statistics</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Loại Thống Kê</th>
-                        <th>Số Lượng</th>
+                        <th>Statistics Type</th>
+                        <th>Quantity</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Số lượng tài khoản</td>
+                    <tr>s
+                        <td>Number of Accounts</td>
                         <td class ="quantity"><?php echo $total_users; ?></td>
                     </tr>
                     <tr>
-                        <td>Số lượng đơn hàng</td>
+                        <td>Number of Products</td>
                         <td class ="quantity" ><?php //echo $total_orders; ?></td>
                     </tr>
                     <tr>
-                        <td>Số lượng sản phẩm</td>
+                        <td>Number of Orders</td>
                         <td class ="quantity" ><?php //echo $total_products; ?></td>
                     </tr>
                 </tbody>
@@ -75,12 +75,13 @@ $total_users = $row['total_users'];
         <p>&copy; 2024 B2C-Shoe Shop</p>
         <p>All rights reserved.</p>
         <div id="footer_links">
-            <a href="">Chính sách bảo mật</a> |
-            <a href="">Điều khoản sử dụng</a> |
-            <a href="">Liên hệ</a>
+            <a href="">Privacy Policy</a> |
+            <a href="">Terms of Service</a> |
+            <a href="">Contact</a>
         </div>
+
         <p id="footer_social">
-            Theo dõi chúng tôi:
+            Follow us:
             <a href="" target="_blank">Facebook</a> |
             <a href="" target="_blank">Twitter</a> |
             <a href="" target="_blank">Instagram</a>

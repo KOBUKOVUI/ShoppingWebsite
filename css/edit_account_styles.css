@@ -1,0 +1,194 @@
+body {
+    font-family: monospace;
+    background-color: rgb(232, 230, 230);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+}
+/* Header */
+header {
+    background-color: #4CAF50;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 50px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 10px; /* Thêm padding để tạo khoảng cách cho viền */
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Viền mờ với độ trong suốt */
+    border-radius: 5px; /* Bo góc của viền */
+    transition: all 0.3s ease; /* Thêm hiệu ứng chuyển động khi hover */
+}
+header nav a:hover {
+    text-decoration: underline;
+    background-color: rgba(255, 255, 255, 0.1); /* Nền mờ nhẹ khi di chuột */
+    border-color: rgba(255, 255, 255, 0.8); /* Tăng độ sáng của viền khi hover */
+}
+/* log out ở header */
+#header_logout {
+    color: red;
+}
+
+/* Main nội dung */
+main {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+main h2 {
+    color: #333;
+    font-size: 30px;
+}
+main p, main ul {
+    margin-top: 10px;
+}
+/* thông tin tài khoản */
+#account_infor p {
+    margin-top: 15px;
+    font-size: 200px;
+    color: #c9bfbf;
+}
+
+/* Footer */
+/* Footer cố định ở cuối */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+}
+#footer_links a , 
+#footer_social a {
+    color: aqua;
+}
+
+/* Form container */
+form {
+    max-width: 400px; /* Giới hạn chiều rộng của form */
+    margin: 20px auto; /* Căn giữa form */
+    padding: 20px;
+    border: 1px solid #ddd; /* Thêm viền nhạt */
+    border-radius: 8px;
+    background-color: #f9f9f9; /* Nền sáng */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
+}
+
+/* Label styling */
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px; /* Giảm kích thước chữ để gọn gàng hơn */
+    color: #333; /* Màu tối hơn để dễ đọc */
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Input styling */
+form input[type="text"] {
+    width: calc(100% - 20px); /* Đảm bảo input vừa khít với form */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc; /* Viền nhẹ nhàng */
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 14px; /* Kích thước chữ phù hợp */
+    box-sizing: border-box; /* Đảm bảo không bị tràn */
+    transition: border-color 0.3s ease;
+}
+
+form input[type="text"]:focus {
+    border-color: #57bd57; /* Đổi màu viền khi focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(87, 189, 87, 0.4); /* Hiệu ứng ánh sáng */
+}
+
+/* Button styling */
+form button {
+    width: 100%; /* Đầy chiều rộng form */
+    padding: 12px;
+    background-color: #57bd57;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase; /* Viết hoa chữ */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+    background-color: #4cae4c;
+    transform: translateY(-2px); /* Tạo hiệu ứng nổi khi hover */
+}
+
+/* Link styling */
+form a {
+    color: #57bd57;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+form a:hover {
+    text-decoration: underline;
+}
+
+/* Container thông tin tài khoản */
+#account_info {
+    display: flex;
+    flex-direction: column; /* Hiển thị theo cột */
+    align-items: center;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9; /* Màu nền nhạt */
+    border: 2px solid #ddd; /* Viền nhạt */
+    border-radius: 10px; /* Bo góc */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+    width: 50%; /* Chiều rộng vừa phải */
+}
+
+/* Mỗi mục thông tin */
+.info_item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0; /* Viền ngăn cách */
+}
+
+/* Dòng cuối cùng không cần viền */
+.info_item:last-child {
+    border-bottom: none;
+}
+
+/* Phần chữ thông tin */
+.info_item p {
+    margin: 0;
+    font-size: 18px; /* Tăng kích thước chữ */
+    color: #333; /* Màu chữ đậm */
+}
+
+/* Phần chữ in đậm */
+.info_item p strong {
+    color: #4CAF50; /* Màu xanh nổi bật */
+    font-weight: bold;
+}
+
+/* Thêm khoảng cách giữa các khối */
+#account_info + h2 {
+    margin-top: 30px;
+}

@@ -1,0 +1,61 @@
+body {
+    font-family: monospace;
+    background-color: rgb(232, 230, 230);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+}
+/* Header */
+header {
+    background-color: #4CAF50;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 50px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 10px; /* Thêm padding để tạo khoảng cách cho viền */
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Viền mờ với độ trong suốt */
+    border-radius: 5px; /* Bo góc của viền */
+    transition: all 0.3s ease; /* Thêm hiệu ứng chuyển động khi hover */
+}
+header nav a:hover {
+    text-decoration: underline;
+    background-color: rgba(255, 255, 255, 0.1); /* Nền mờ nhẹ khi di chuột */
+    border-color: rgba(255, 255, 255, 0.8); /* Tăng độ sáng của viền khi hover */
+}
+/* log out ở header */
+#header_logout {
+    color: red;
+}
+/* main */
+main {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Footer */
+/* Footer cố định ở cuối */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+}
+#footer_links a , 
+#footer_social a {
+    color: aqua;
+}
