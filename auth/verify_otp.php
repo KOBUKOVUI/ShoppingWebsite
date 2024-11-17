@@ -3,7 +3,7 @@ session_start();
 // Cấu hình bảo mật session
 ini_set('session.cookie_secure', 1); // Chỉ cho phép cookie qua HTTPS
 ini_set('session.cookie_httponly', 1); // Ngăn truy cập cookie qua JavaScript
-require 'db_connect.php';
+require '../includes/db_connect.php';
 
 //ktra người dùng đăng ký chưa 
 
@@ -43,7 +43,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             // Chuyển hướng trang home
             echo "<script>
             alert('Verified OTP successfully.');
-                window.location.href = 'home.php';
+                window.location.href = '../user/home.php';
             </script>";
         exit();
         } else {

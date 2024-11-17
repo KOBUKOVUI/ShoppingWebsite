@@ -4,7 +4,7 @@ ini_set('session.cookie_secure', 1); // Chỉ cho phép cookie qua HTTPS
 ini_set('session.cookie_httponly', 1); // Ngăn truy cập cookie qua JavaScript
 ini_set('session.cookie_samesite', 'Strict'); // Cấm gửi cookie trong các yêu cầu từ trang web khác
 session_start();
-require 'db_connect.php';
+require '../includes/db_connect.php';
 
 //lấy thông tin từ form
 $email = htmlspecialchars(trim($_POST['email']));//dùng html specialchars và trim để tránh xss

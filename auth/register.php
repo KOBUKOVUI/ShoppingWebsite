@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet" href="css/login_register_styles.css">
-    <link rel="icon" href="icon/edit.png" type = "image/x-icon">
+    <link rel="stylesheet" href="../css/login_register_styles.css">
+    <link rel="icon" href="../icon/edit.png" type = "image/x-icon">
     <!-- add capcha -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
@@ -47,7 +47,7 @@
              <div class="g-recaptcha" data-sitekey="6LcWmnsqAAAAAHCiHq6DoK7T74iYmHe54khajjZ8" style ="transform: scale(0.8); transform-origin: 0 0; margin: 0 auto; "></div>
              </div>
              <button type="submit">Register</button>
-             <p>Already have an account <a href="index.php">Login now</a></p>
+             <p>Already have an account <a href="../index.php">Login now</a></p>
 
         </form>
     </div>

@@ -4,14 +4,14 @@ ini_set('session.cookie_httponly', 1); // Ngăn truy cập cookie qua JavaScript
 ini_set('session.cookie_samesite', 'Strict'); // Chỉ gửi cookie trong cùng một trang web
 
 session_start();
-require 'db_connect.php';
+require '../includes/db_connect.php';
 
 // Lấy thông tin tài khoản từ session
 $user_id = $_SESSION['user_id'];
 
 // Kiểm tra xem người dùng đã đăng nhập chưa
 if (!$user_id) {
-    header("Location: login.php");
+    header("Location: ../auth/login.php");
     exit();
 }
 

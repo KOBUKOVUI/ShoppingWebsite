@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verify OTP</title>
-    <link rel="stylesheet" href="css/otp_styles.css">
-    <link rel="icon" href="icon/password.png" type = "image/x-icon">
+    <link rel="stylesheet" href="../css/otp_styles.css">
+    <link rel="icon" href="../icon/password.png" type = "image/x-icon">
 </head>
 <body id="otp_body">
     <div id="otp_container">

@@ -12,7 +12,7 @@ if (isset($_SESSION['verified']) && $_SESSION['verified'] == true) {
         header("Location: admin_dashboard/admin_dashboard.php");
         exit(); 
     }else{
-        header("Location: home.php"); // Nếu là ng dùng đến home
+        header("Location: user/home.php"); // Nếu là ng dùng đến home
     }
 }
 ?>
@@ -37,7 +37,7 @@ if (isset($_SESSION['verified']) && $_SESSION['verified'] == true) {
                 unset($_SESSION['error_message']);  // Xóa thông báo lỗi
             }
             ?>
-        <form id ="login_form" action="login_process.php" method = "POST">
+        <form id ="login_form" action="auth/login_process.php" method = "POST">
             <label for="email">Email</label>
             <input type="text" id="email" name="email" required>
             <br>
@@ -56,7 +56,7 @@ if (isset($_SESSION['verified']) && $_SESSION['verified'] == true) {
              <div class="g-recaptcha" data-sitekey="6LcWmnsqAAAAAHCiHq6DoK7T74iYmHe54khajjZ8" style ="transform: scale(0.8); transform-origin: 0 0; margin: 0 auto; "></div>
              </div>
             <button type = "submit">Login</button>
-            <p>Don't have any account? <a  href="register.php">Register now</a></p>
+            <p>Don't have any account? <a  href="auth/register.php">Register now</a></p>
         </form>
 
     </div>

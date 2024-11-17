@@ -4,7 +4,7 @@ ini_set('session.cookie_secure', 1); // Chỉ cho phép cookie qua HTTPS
 ini_set('session.cookie_httponly', 1); // Ngăn truy cập cookie qua JavaScript
 ini_set('session.cookie_samesite', 'Strict'); // Cấm gửi cookie trong các yêu cầu từ trang web khác
 session_start();
-require 'db_connect.php'; 
+require '../includes/db_connect.php'; 
 
 // Lấy thông tin từ form
 $email = htmlspecialchars(trim($_POST['email'])); // Dùng html specialchars và trim để tránh XSS
@@ -43,7 +43,7 @@ if (!empty($errors)) {
     
     // Nối các lỗi thành chuỗi 
     $_SESSION['error_message'] = implode("<br>", $errors_with_plus); 
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit();
 }
 
@@ -71,7 +71,7 @@ if ($result->num_rows == 1) {
             $stmt->execute();
         } else {
             $_SESSION['error_message'] = "+ Your account is locked due to multiple failed login attempts. Please try again later.";
-            header("Location: index.php");
+            header("Location: ../index.php");
             exit();
         }
     }
@@ -124,7 +124,7 @@ if ($result->num_rows == 1) {
         } else {
             $_SESSION['verified'] = true;
             $_SESSION['role'] = 'admin';
-            header("Location: admin_dashboard/admin_dashboard.php");
+            header("Location: ../admin_dashboard/admin_dashboard.php");
             exit();
         }
     } else {
@@ -154,7 +154,7 @@ if ($result->num_rows == 1) {
     }
 } else {
     $_SESSION['error_message'] = "+ No account found with that email.";
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit();
 }
 
@@ -167,7 +167,7 @@ if (!empty($errors)) {
 
     // Nối các lỗi thành chuỗi với mỗi lỗi trên một dòng mới
     $_SESSION['error_message'] = implode("<br>", $errors_with_plus); 
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit();
 }
 

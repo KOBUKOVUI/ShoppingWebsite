@@ -1,10 +1,10 @@
 <?php
 session_start();
-require '../db_connect.php';
+require '../includes/db_connect.php';
 
 // Kiểm tra xem người dùng có phải là admin không
 if ($_SESSION['role'] != 'admin') {
-    header("Location: /ShoppingWebsite/index.php");
+    header("Location: ../index.php");
     exit();
 }
 

@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit account</title>
-    <link rel="icon" href="icon/edit_account.png" type = "image/x-icon">
-    <link rel="stylesheet" href="css/edit_account_styles.css">
-</head>
-<body>
 <?php
 session_start();
-require 'db_connect.php';
+require '../includes/db_connect.php';
 
 // Kiểm tra xem người dùng đã đăng nhập chưa
 if (!isset($_SESSION['user_id'])) {
@@ -39,68 +29,56 @@ $user = $result->fetch_assoc();
 $stmt->close();
 $conn->close();
 ?>
- <header>
-        <h1>Account management</h1>
-        <nav>
-            <a href="home.php">Home</a>
-            <a href="edit_account.php">Account management</a>
-            <a href="orders.php">Orders</a>
-            <a id = "header_logout" href = 'logout.php'>Log out</a>
-        </nav>
-    </header>
-<main>
-        <h2>Account informations</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Account</title>
+    <link rel="icon" href="../icon/edit_account.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/edit_account_styles.css">
+</head>
+<body>
+    <?php include '../includes/header.php'; ?>
+
+    <main>
+        <h2>Account Information</h2>
 
         <!-- Hiển thị thông tin tài khoản -->
         <div id="account_info">
-    <div class="info_item">
-        <p><strong>Email:</strong></p>
-        <p><?= htmlspecialchars($user['email']) ?></p>
-    </div>
-    <div class="info_item">
-        <p><strong>Full name:</strong></p>
-        <p><?= htmlspecialchars($user['name']) ?></p>
-    </div>
-    <div class="info_item">
-        <p><strong>Phone number:</strong></p>
-        <p><?= htmlspecialchars($user['phone_number'] ?? 'Not Provided') ?></p>
-    </div>
-</div>
-        <h2>Edit informations</h2>
-        <!--ktra các lỗi xảy ra -->
-        <?php
-            if (isset($_SESSION['error_message'])) {
-                echo "<p style='color: green; font-weight: bold; font-size: 15px; text-align: center;'>" . $_SESSION['error_message'] . "</p>";
-                unset($_SESSION['error_message']);  // Xóa thông báo lỗi
-            }
-        ?>
+            <div class="info_item">
+                <p><strong>Email:</strong> <?= htmlspecialchars($user['email']) ?></p>
+            </div>
+            <div class="info_item">
+                <p><strong>Full Name:</strong> <?= htmlspecialchars($user['name']) ?></p>
+            </div>
+            <div class="info_item">
+                <p><strong>Phone Number:</strong> <?= htmlspecialchars($user['phone_number'] ?? 'Not Provided') ?></p>
+            </div>
+        </div>
+
+        <h2>Edit Information</h2>
+
+        <!-- Hiển thị thông báo lỗi nếu có -->
+        <?php if (isset($_SESSION['error_message'])): ?>
+            <p style="color: green; font-weight: bold; font-size: 15px; text-align: center;">
+                <?= $_SESSION['error_message']; ?>
+            </p>
+            <?php unset($_SESSION['error_message']); ?>
+        <?php endif; ?>
+
+        <!-- Form cập nhật thông tin người dùng -->
         <form method="POST" action="edit_account_process.php">
-            <label for="name">Full name</label>
+            <label for="name">Full Name</label>
             <input type="text" id="name" name="name" value="<?= htmlspecialchars($user['name']) ?>" required>
 
-            <label for="phone_number">Phone number</label>
+            <label for="phone_number">Phone Number</label>
             <input type="text" id="phone_number" name="phone_number" value="<?= htmlspecialchars($user['phone_number']) ?>">
-            <br>
+
             <button type="submit">Update</button>
         </form>
     </main>
-    <footer>
-    <div id="footer_content">
-        <p>&copy; 2024 B2C-Shoe Shop</p>
-        <p>All rights reserved.</p>
-        <div id="footer_links">
-            <a href="">Privacy Policy</a> |
-            <a href="">Terms of Service</a> |
-            <a href="">Contact</a>
-        </div>
 
-        <p id="footer_social">
-            Follow us:
-            <a href="" target="_blank">Facebook</a> |
-            <a href="" target="_blank">Twitter</a> |
-            <a href="" target="_blank">Instagram</a>
-        </p>
-    </div>
-</footer>
+    <?php include '../includes/footer.php'; ?>
 </body>
 </html>
