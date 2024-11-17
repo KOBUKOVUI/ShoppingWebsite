@@ -1,0 +1,144 @@
+/* Reset mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: monospace;
+    background-color: rgb(232, 230, 230);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Chiều cao tối thiểu của body là chiều cao màn hình */
+}
+
+/* Main (Nội dung chính) */
+main {
+    flex: 1; /* Phần main sẽ chiếm không gian còn lại giữa header và footer */
+    padding: 20px;
+    text-align: center;
+}
+
+/* Header */
+header {
+    background-color: #4CAF50;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 50px;
+    padding-bottom: 20px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 5px 10px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: white;
+}
+
+#header_logout {
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#header_logout:hover {
+    text-decoration: underline;
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    position: relative; /* Đảm bảo không ảnh hưởng đến bố cục Flexbox */
+}
+footer a {
+    color: aqua;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Khung cho toàn bộ form */
+.form_container {
+    padding: 20px;
+    background-color: rgb(203, 197, 197); /* Màu nền sáng */
+    border: 1px solid #686767; /* Viền nhẹ cho khung */
+    border-radius: 10px; /* Bo góc */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+    max-width: 600px; /* Chiều rộng tối đa */
+    margin: 0 auto; /* Căn giữa khung */
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px; /* Giảm kích thước chữ để gọn gàng hơn */
+    color: #333; /* Màu tối hơn để dễ đọc */
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Input styling */
+form input[type="text"], input[type="email"], select{
+    width: calc(100% - 20px); /* Đảm bảo input vừa khít với form */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc; /* Viền nhẹ nhàng */
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 14px; /* Kích thước chữ phù hợp */
+    box-sizing: border-box; /* Đảm bảo không bị tràn */
+    transition: border-color 0.3s ease;
+}
+
+form input[type="text"],input[type="email"] :focus {
+    border-color: #57bd57; /* Đổi màu viền khi focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(87, 189, 87, 0.4); /* Hiệu ứng ánh sáng */
+}
+
+/* Button styling */
+form button {
+    width: 100%; /* Đầy chiều rộng form */
+    padding: 12px;
+    background-color: #57bd57;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase; /* Viết hoa chữ */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+    background-color: #4cae4c;
+    transform: translateY(-2px); /* Tạo hiệu ứng nổi khi hover */
+}
