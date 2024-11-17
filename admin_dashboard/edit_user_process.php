@@ -4,7 +4,7 @@ require '../includes/db_connect.php';
 
 // Kiểm tra quyền truy cập
 if ($_SESSION['role'] != 'admin') {
-    header("Location: /ShoppingWebsite/index.php");
+    header("Location: ../index.php");
     exit();
 }
 
@@ -14,11 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $phone_number = $_POST['phone_number'];
-    $role = $_POST['role'];
 
     // Cập nhật thông tin người dùng vào cơ sở dữ liệu
-    $stmt = $conn->prepare("UPDATE users SET name = ?, email = ?, phone_number = ?, role = ? WHERE id = ?");
-    $stmt->bind_param("ssssi", $name, $email, $phone_number, $role, $user_id);
+    $stmt = $conn->prepare("UPDATE users SET name = ?, email = ?, phone_number = ? WHERE id = ?");
+    $stmt->bind_param("sssi", $name, $email, $phone_number, $user_id);
 
     if ($stmt->execute()) {
         echo "<script>

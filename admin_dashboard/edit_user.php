@@ -4,7 +4,7 @@ require '../includes/db_connect.php';
 
 // Kiểm tra quyền truy cập
 if ($_SESSION['role'] != 'admin') {
-    header("Location: /ShoppingWebsite/index.php");
+    header("Location: ../index.php");
     exit();
 }
 
@@ -78,12 +78,6 @@ $stmt->close();
 
         <label for="phone_number">Phone Number</label>
         <input type="text" id="phone_number" name="phone_number" value="<?= htmlspecialchars($user['phone_number']) ?>">
-
-        <label for="role">Role</label>
-        <select id="role" name="role" required>
-            <option value="user" <?= ($user['role'] == 'user') ? 'selected' : ''; ?>>User</option>
-            <option value="admin" <?= ($user['role'] == 'admin') ? 'selected' : ''; ?>>Admin</option>
-        </select>
 
         <button type="submit">Update</button>
     </form>

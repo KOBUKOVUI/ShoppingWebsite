@@ -105,7 +105,7 @@ form label {
 }
 
 /* Input styling */
-form input[type="text"], input[type="email"], select{
+form input[type="text"], input[type="email"]{
     width: calc(100% - 20px); /* Đảm bảo input vừa khít với form */
     padding: 10px;
     margin-bottom: 15px;

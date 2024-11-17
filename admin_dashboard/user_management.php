@@ -6,7 +6,7 @@ session_start();
 
 // Kiểm tra quyền admin
 if ($_SESSION['role'] != 'admin') {
-    header("Location: /ShoppingWebsite/index.php");
+    header("Location: ../index.php");
     exit();
 }
 
