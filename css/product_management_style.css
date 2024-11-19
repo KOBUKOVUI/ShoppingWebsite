@@ -1,12 +1,24 @@
-/* Đặt font chữ và màu nền cho toàn bộ trang */
+/* Reset mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
 body {
     font-family: monospace;
     background-color: rgb(232, 230, 230);
-    margin: 0;
-    padding: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100vh; /* Chiều cao tối thiểu của body là chiều cao màn hình */
+}
+
+/* Main (Nội dung chính) */
+main {
+    flex: 1; /* Phần main sẽ chiếm không gian còn lại giữa header và footer */
+    padding: 20px;
+    text-align: center;
 }
 
 /* Header */
@@ -15,66 +27,42 @@ header {
     font-size: 20px;
     font-weight: bold;
     color: white;
-    padding: 15px;
+    padding: 20px;
     text-align: center;
 }
 
 header h1 {
     font-size: 50px;
+    padding-bottom: 20px;
 }
 
 header nav a {
     color: white;
     text-decoration: none;
-    margin: 0 10px;
-    padding: 5px 10px; /* Thêm padding để tạo khoảng cách cho viền */
-    border: 2px solid rgba(255, 255, 255, 0.5); /* Viền mờ với độ trong suốt */
-    border-radius: 5px; /* Bo góc của viền */
-    transition: all 0.3s ease; /* Thêm hiệu ứng chuyển động khi hover */
+    margin: 0 15px;
+    padding: 5px 10px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    transition: all 0.3s ease;
 }
 
-/* Định dạng khi di chuột qua các thẻ a */
 header nav a:hover {
     text-decoration: underline;
-    background-color: rgba(255, 255, 255, 0.1); /* Nền mờ nhẹ khi di chuột */
-    border-color: rgba(255, 255, 255, 0.8); /* Tăng độ sáng của viền khi hover */
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: white;
 }
-/* log out ở header */
+
 #header_logout {
     color: red;
-}
-/* Main nội dung */
-main {
-    padding: 20px;
-    flex: 1;
-    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-main h2 {
-    color: #333;
-    font-size: 40px;
-}
-
-main p, main ul {
-    margin-top: 10px;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-ul li {
-    margin: 10px 0;
-}
-
-ul li a {
-    color: #4CAF50;
-    text-decoration: none;
-}
-
-ul li a:hover {
+#header_logout:hover {
     text-decoration: underline;
+    background-color: rgba(255, 0, 0, 0.2);
 }
 
 /* Footer */
@@ -84,10 +72,16 @@ footer {
     text-align: center;
     padding: 10px;
     width: 100%;
+    position: relative; /* Đảm bảo không ảnh hưởng đến bố cục Flexbox */
 }
-#footer_links a , 
-#footer_social a {
+footer a {
     color: aqua;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
 
 
@@ -125,6 +119,10 @@ td {
 td, th {
     border-right: 1px solid #ddd; /* Viền giữa các cột */
 }
+h2 {
+    font-size: 40px; 
+    font-weight: bold;
+}
 
 /* Bỏ viền phải của cột cuối */
 td:last-child, th:last-child {
@@ -135,5 +133,27 @@ td:last-child, th:last-child {
     font-size: 30px;
 }
 
+#total_row{
+    font-size: 30px; 
+    font-weight: bold;
+}
 
+button {
+    width: 19%; /* Đầy chiều rộng form */
+    padding: 12px;
+    background-color: #57bd57;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase; /* Viết hoa chữ */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 26px;
+}
 
+button:hover {
+    background-color: #4cae4c;
+    transform: translateY(-2px); /* Tạo hiệu ứng nổi khi hover */
+}

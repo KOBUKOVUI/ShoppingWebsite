@@ -11,21 +11,24 @@ if ($_SESSION['role'] != 'admin') {
 }
 
 require '../includes/db_connect.php';
-//Lấy số lượng users
-$query = "SELECT COUNT(*) AS total_users FROM users WHERE role = 'user'";
+
+//Lấy số lượng products
+$query = "SELECT COUNT(*) AS total_products FROM products ";
 $result = $conn->query($query);
 $row = $result->fetch_assoc();
-$total_users = $row['total_users'];
+$total_products = $row['total_products'];
 ?>
 
+
+
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link rel="icon" href="../icon/admin.png" type = "image/x-icon">
-    <link rel="stylesheet" href="../css/admin_styles.css">
+    <title>Product management</title>
+    <link rel="icon" href="../icon/product_management.png" type = "image/x-icon">
+    <link rel="stylesheet" href="..\css\product_management_style.css">
 </head>
 <body>
     <?php include '../includes/admin_header.php'; ?>
@@ -43,19 +46,29 @@ $total_users = $row['total_users'];
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Number of Accounts</td>
-                        <td class ="quantity"><?php echo $total_users; ?></td>
+                        <td>Number of running shoes </td>
+                        <td class ="quantity"><?php //echo $total_users; ?></td>
                     </tr>
                     <tr>
-                        <td>Number of Products</td>
+                        <td>Number of soccer shoes</td>
                         <td class ="quantity" ><?php //echo $total_orders; ?></td>
                     </tr>
                     <tr>
-                        <td>Number of Orders</td>
+                        <td>Number of fashion shoes</td>
                         <td class ="quantity" ><?php //echo $total_products; ?></td>
+                    </tr>
+                    <tr>
+                        <td id="total_row">Total</td>
+                        <td class ="quantity" ><?php echo $total_products; ?></td>
                     </tr>
                 </tbody>
             </table>
+        </section>
+        <section>
+            <a href="add_product.php">
+                <button>ADD PRODUCT</button>
+            </a>
+
         </section>
     </main>
 
