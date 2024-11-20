@@ -241,7 +241,7 @@ td:last-child, th:last-child {
 
 /* Class cho bảng sản phẩm */
 .table_product {
-    width: 80%;
+    width: 98%;
     margin: 20px auto; /* Căn giữa bảng */
     border-collapse: collapse;
     background-color: #fff;
@@ -280,10 +280,6 @@ td:last-child, th:last-child {
     height: 50px;
     object-fit: cover;
 }
-
-/* thay đổi kích cỡ từng cột */
-
-
 /* Cập nhật cho các ô của các cột nhỏ hơn */
 .td_product, .th_product {
     padding: 8px; /* Giảm padding của tất cả các ô */
@@ -298,31 +294,31 @@ td:last-child, th:last-child {
 
 /* Điều chỉnh cột Category */
 .td_category, .th_category {
-    width: 200px; /* Đặt width cố định cho cột này */
+    width: 120px; /* Đặt width cố định cho cột này */
 }
 
 /* Điều chỉnh cột brand */
 .td_brand, .th_brand{
-    width: 120px;
+    width: 80px;
 }
 /* Điều chỉnh cột Price */
 .td_price, .th_price {
-    width: 220px; /* Đặt width cố định cho cột này */
+    width: 180px; /* Đặt width cố định cho cột này */
     font-size: 20px; /* Giảm kích thước chữ */
     font-weight: bold;
 }
 
 .td_image{
     height: 80px;
-    width: 100px;
+    width: 200px;
 }
 /* Điều chỉnh cột Image (nếu cần) */
 .td_image img {
-    width: 100px; /* Giảm kích thước ảnh */
-    height: 80px;
+    width: 200px; /* Giảm kích thước ảnh */
+    height: 150px;
     object-fit: contain;
 }
-
+/* cột stock */
 .td_stock, .th_stock{
     width: 35px;
     height: 40px;
@@ -336,21 +332,97 @@ td:last-child, th:last-child {
 /* Style cho nút Edit */
 
 .edit_button {
-    width: 40px;
-    height: 30px;
-    padding: 10px;
+    width: 80px;
+    height: 40px;
+    padding: 20px;
+    margin-left: 20px;
+    margin-bottom: 5px;
     background-color: #5cb85c;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 10px;
+    font-size: 7px;
     font-weight: bold;
 }
 
 .edit_button:hover {
     background-color: #4cae4c;
 }
+
+/* cột add stock css */
+.td_update_stock {
+    padding: 5px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.td_update_stock, .th_update_stock{
+    width: 25px;
+}
+
+/* Định dạng cho form */
+#update_stock_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Định dạng cho các phần tử trong form */
+.size_input, .quantity_input {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Định dạng cho label */
+.size_input label, .quantity_input label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Định dạng cho dropdown (size select) */
+#size {
+    padding: 8px;
+    font-size: 14px;
+    width: 180px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Định dạng cho input số lượng */
+#quantity {
+    padding: 8px;
+    font-size: 14px;
+    width: 80px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Định dạng cho nút submit */
+input[type="submit"] {
+    background-color: #4CAF50; /* Màu nền */
+    color: white; /* Màu chữ */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hiệu ứng hover khi di chuột vào nút submit */
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Định dạng cho các phần tử khác trong bảng */
+.td_update_stock input[type="submit"] {
+    margin-top: 10px;
+}
+
 
 
 
