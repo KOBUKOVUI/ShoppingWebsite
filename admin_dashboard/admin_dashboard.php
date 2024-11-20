@@ -16,6 +16,12 @@ $query = "SELECT COUNT(*) AS total_users FROM users WHERE role = 'user'";
 $result = $conn->query($query);
 $row = $result->fetch_assoc();
 $total_users = $row['total_users'];
+
+// truy vấn tổng số lượng giày dựa theo cột stock 
+$sql = "SELECT SUM(stock) AS total_quantity FROM products";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+$total_quantity = $row['total_quantity'];
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +54,7 @@ $total_users = $row['total_users'];
                     </tr>
                     <tr>
                         <td>Number of Products</td>
-                        <td class ="quantity" ><?php //echo $total_orders; ?></td>
+                        <td class ="quantity" ><?php echo $total_quantity; ?></td>
                     </tr>
                     <tr>
                         <td>Number of Orders</td>

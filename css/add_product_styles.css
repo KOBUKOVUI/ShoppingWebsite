@@ -91,8 +91,8 @@ footer a {
 /* CSS cho ô hiển thị màu tròn */
 #colorBox {
     display: inline-block;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     margin-left: 10px;
     border: 1px solid #000;
     border-radius: 50%; /* Làm cho ô thành hình tròn */
@@ -109,7 +109,7 @@ footer a {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
     max-width: 700px; /* Chiều rộng tối đa */
     margin: 30px auto; /* Căn giữa khung */
-    background-color: rgb(214, 213, 213);
+    background-color: rgb(230, 227, 227);
 }
 
 /* Label form */

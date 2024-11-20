@@ -1,0 +1,361 @@
+/* Reset mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: monospace;
+    background-color: rgb(232, 230, 230);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Chiều cao tối thiểu của body là chiều cao màn hình */
+}
+
+/* Main (Nội dung chính) */
+main {
+    flex: 1; /* Phần main sẽ chiếm không gian còn lại giữa header và footer */
+    padding: 20px;
+    text-align: center;
+}
+
+/* Header */
+header {
+    background-color: #4CAF50;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 50px;
+    padding-bottom: 20px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 5px 10px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: white;
+}
+
+#header_logout {
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#header_logout:hover {
+    text-decoration: underline;
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    position: relative; /* Đảm bảo không ảnh hưởng đến bố cục Flexbox */
+}
+footer a {
+    color: aqua;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* Định dạng chung cho bảng */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse; /* Kết hợp các viền lại với nhau */
+    background-color: white; /* Màu nền trắng cho bảng */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Thêm hiệu ứng đổ bóng */
+    border-radius: 10px; 
+}
+
+/* Định dạng cho các ô thẻ header (th) */
+th {
+    background-color: #4CAF50 ; /* Màu nền của header */
+    color: white; /* Màu chữ trong header */
+    padding: 12px; /* Khoảng cách giữa chữ và viền ô */
+    text-align: left; /* Canh trái nội dung */
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Định dạng cho các ô */
+td {
+    padding: 12px; /* Khoảng cách giữa chữ và viền ô */
+    text-align: left; /* Canh trái nội dung */
+    border-bottom: 1px solid #ddd; /* Viền dưới cho các ô dữ liệu */
+    font-size: 20px;
+    font-family: monospace;
+    color: #333;
+}
+
+/* Định dạng cho các cột khi cần */
+td, th {
+    border-right: 1px solid #ddd; /* Viền giữa các cột */
+}
+h2 {
+    font-size: 30px; 
+    font-weight: bold;
+}
+
+/* Bỏ viền phải của cột cuối */
+td:last-child, th:last-child {
+    border-right: none;
+}
+
+
+.total_row{
+    font-size: 30px; 
+    font-weight: bold;
+    background-color:#dadada;
+}
+
+.button_container {
+    display: flex;
+    justify-content: center; /* Căn giữa các nút */
+    gap: 20px; /* Khoảng cách giữa các nút */
+    margin: 20px 0; /* Khoảng cách trên dưới */
+}
+
+/* Style cho nút */
+.custom_button {
+    background-color: #4CAF50; /* Màu nền */
+    color: white; /* Màu chữ */
+    border: none; /* Bỏ viền */
+    padding: 10px 20px; /* Khoảng cách trong */
+    font-size: 16px; /* Kích thước chữ */
+    cursor: pointer; /* Con trỏ khi hover */
+    border-radius: 5px; /* Bo góc */
+    transition: background-color 0.3s ease; /* Hiệu ứng khi hover */
+}
+
+/* Hiệu ứng hover */
+.custom_button:hover {
+    background-color: #45a049; /* Màu nền khi hover */
+}
+
+
+
+/* Search Container */
+.search_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+    width: 100%;
+}
+
+/* Input field */
+
+.search_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+    width: 100%;
+}
+
+/* Input field */
+.search_input {
+    padding: 12px 20px;
+    font-size: 16px;
+    width: 300px; /* Độ rộng của ô input */
+    border: 2px solid #ddd;
+    border-radius: 50px 0 0 50px; /* Bo góc mềm mại cho chỉ trái */
+    outline: none;
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động mượt mà */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng nhẹ */
+}
+
+/* Định dạng khi focus */
+.search_input:focus {
+    border-color: #4CAF50; /* Màu viền khi focus */
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.4); /* Bóng nhẹ khi focus */
+}
+
+/* Định dạng cho placeholder */
+.search_input::placeholder {
+    color: #aaa; /* Màu chữ placeholder */
+    font-style: italic; /* Thêm style chữ nghiêng cho placeholder */
+}
+
+/* Search button (with icon) */
+.search_btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 0 50px 50px 0; /* Bo góc mềm mại cho chỉ phải */
+    width: 40px; /* Độ rộng của button */
+    height: 40px; /* Độ cao của button */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: 2px solid #4CAF50; /* Viền quanh nút giống màu chính */
+}
+
+.search_btn:hover {
+    background-color: #45a049; /* Đổi màu khi hover */
+}
+
+/* Icon trong button */
+.search_btn i {
+    font-size: 18px;
+}
+
+/* Optional: Hover effect on input field */
+.search_input:hover {
+    border-color: #45a049; /* Màu viền khi hover */
+
+}/* Định dạng bảng sản phẩm */
+
+
+/* Class cho bảng sản phẩm */
+.table_product {
+    width: 80%;
+    margin: 20px auto; /* Căn giữa bảng */
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Class cho các hàng tiêu đề */
+.tr_header {
+    background-color: #4CAF50;
+}
+
+/* Class cho mỗi ô tiêu đề */
+.th_product {
+    color: white;
+    padding: 8px;
+    text-align: left;
+    font-size: 16px;
+}
+
+/* Class cho các hàng dữ liệu */
+.tr_product {
+    border-bottom: 1px solid #ddd;
+}
+
+/* Class cho các ô dữ liệu */
+.td_product {
+    padding: 8px;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Class cho hình ảnh sản phẩm */
+.product_image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+/* thay đổi kích cỡ từng cột */
+
+
+/* Cập nhật cho các ô của các cột nhỏ hơn */
+.td_product, .th_product {
+    padding: 8px; /* Giảm padding của tất cả các ô */
+    font-size: 14px; /* Giảm kích thước chữ */
+}
+
+/* Điều chỉnh cột Product Name */
+.td_product_name, .th_product_name {
+    font-weight: bold;
+    width: 180px; /* Đặt width cố định cho cột này */
+}
+
+/* Điều chỉnh cột Category */
+.td_category, .th_category {
+    width: 200px; /* Đặt width cố định cho cột này */
+}
+
+/* Điều chỉnh cột brand */
+.td_brand, .th_brand{
+    width: 120px;
+}
+/* Điều chỉnh cột Price */
+.td_price, .th_price {
+    width: 220px; /* Đặt width cố định cho cột này */
+    font-size: 20px; /* Giảm kích thước chữ */
+    font-weight: bold;
+}
+
+.td_image{
+    height: 80px;
+    width: 100px;
+}
+/* Điều chỉnh cột Image (nếu cần) */
+.td_image img {
+    width: 100px; /* Giảm kích thước ảnh */
+    height: 80px;
+    object-fit: contain;
+}
+
+.td_stock, .th_stock{
+    width: 35px;
+    height: 40px;
+}
+
+/* cột edit */
+.td_edit, .th_edit {
+    width: 30px; 
+}
+
+/* Style cho nút Edit */
+
+.edit_button {
+    width: 40px;
+    height: 30px;
+    padding: 10px;
+    background-color: #5cb85c;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.edit_button:hover {
+    background-color: #4cae4c;
+}
+
+
+
+
+
+
+
+

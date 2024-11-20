@@ -49,6 +49,13 @@ if ($result_sizes->num_rows > 0) {
         <h2 id = "main_title">ADD PRODUCT</h2>
         <div id = "form_container">
             <form action="add_product_process.php" method="POST" enctype="multipart/form-data">
+                <!-- thông báo các lỗi -->
+                <?php
+                if (isset($_SESSION['error_message'])) {
+                    echo "<p style='color: red; font-size: 20px; text-align: left; font-weight: bold'>" . $_SESSION['error_message'] . "</p> <br>";
+                    unset($_SESSION['error_message']);  // Xóa thông báo lỗi
+                }
+                ?>
                 <label for="name">Product Name:</label>
                 <input type="text" name="name" id="name" required>
 
@@ -62,9 +69,7 @@ if ($result_sizes->num_rows > 0) {
                     <?php endforeach; ?>
                 </select>
 
-                <label for="price">Price (VNĐ):</label>
-                <input type="text" name="price" id="price" required oninput="formatPrice(this)">
-
+                
                 <label for="size">Size:</label>
                 <select name="size_id" id="size" required>
                     <option value="">-- Select a Size --</option>
@@ -72,20 +77,20 @@ if ($result_sizes->num_rows > 0) {
                         <option value="<?= htmlspecialchars($size['id'], ENT_QUOTES, 'UTF-8'); ?>">
                             <?= htmlspecialchars($size['size'], ENT_QUOTES, 'UTF-8'); ?>
                         </option>
-                    <?php endforeach; ?>
-                </select>
-
-                <label for="color">Color:<!-- Ô hiển thị màu --><div id="colorBox"></div></label>
-                <select name="color" id="color" onchange="updateColorBox()" required>
+                        <?php endforeach; ?>
+                    </select>
                     
-                    <option value="">-- Select a Color --</option>
-                    <option value="red">Red</option>
-                    <option value="blue">Blue</option>
-                    <option value="green">Green</option>
-                    <option value="black">Black</option>
-                    <option value="white">White</option>
-                </select>
-
+                    <label for="brand">Brand:</label>
+                    <select name="brand" id="brand" onchange="updateColorBox()" required>
+                        <option value="">-- Select a Brand --</option>
+                        <option value="nike">Nike</option>
+                        <option value="adidas">Addidas</option>
+                        <option value="puma">Puma</option>
+                    </select>
+                    
+                    <label for="price">Price (VNĐ):</label>
+                    <input type="text" name="price" id="price" required oninput="formatPrice(this)">
+                    
                 <label for="stock">Stock:</label>
                 <input type="number" name="stock" id="stock" required min="0">
 
