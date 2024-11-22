@@ -84,7 +84,7 @@ if ($result_sizes->num_rows > 0) {
                     <select name="brand" id="brand" onchange="updateColorBox()" required>
                         <option value="">-- Select a Brand --</option>
                         <option value="nike">Nike</option>
-                        <option value="adidas">Addidas</option>
+                        <option value="addidas">Addidas</option>
                         <option value="puma">Puma</option>
                     </select>
                     

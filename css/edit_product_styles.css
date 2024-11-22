@@ -1,0 +1,221 @@
+/* Reset mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: monospace;
+    background-color: rgb(232, 230, 230);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Chiều cao tối thiểu của body là chiều cao màn hình */
+}
+
+/* Main (Nội dung chính) */
+main {
+    flex: 1; /* Phần main sẽ chiếm không gian còn lại giữa header và footer */
+    padding: 20px;
+    text-align: center;
+}
+
+/* Header */
+header {
+    background-color: #4CAF50;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 50px;
+    padding-bottom: 20px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 5px 10px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: white;
+}
+
+#header_logout {
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#header_logout:hover {
+    text-decoration: underline;
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    position: relative; /* Đảm bảo không ảnh hưởng đến bố cục Flexbox */
+}
+footer a {
+    color: aqua;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Toàn bộ khu vực chính */
+main {
+    background-color: #f4f4f9; /* Nền sáng để làm nổi bật form */
+    padding: 30px 0; /* Tạo khoảng cách phía trên và dưới */
+    font-family: Arial, sans-serif; /* Font chữ phổ biến và dễ đọc */
+}
+
+/* Khung chứa toàn bộ form */
+.form_container {
+    width: 50%;
+    padding: 20px;
+    background-color: #f9f9f9; /* Màu nền sáng */
+    border: 1px solid #ddd; /* Viền nhẹ cho khung */
+    border-radius: 15px; /* Bo góc */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+    max-width: 700px; /* Chiều rộng tối đa */
+    margin: 30px auto; /* Căn giữa khung */
+    background-color: rgb(230, 227, 227);
+}
+/* Label của form */
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 18px;
+    color: #333; /* Màu chữ đậm hơn để dễ đọc */
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Các trường input, select, và textarea */
+form input[type="text"], 
+form select, 
+form textarea {
+    width: 100%; /* Chiếm toàn bộ chiều ngang của khung cha */
+    padding: 12px;
+    margin-bottom: 20px; /* Khoảng cách giữa các trường */
+    border: 1px solid #ccc; /* Viền nhẹ */
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: #f9f9f9; /* Màu nền nhạt */
+    box-sizing: border-box; /* Đảm bảo padding không ảnh hưởng đến kích thước */
+    transition: border-color 0.3s ease;
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Khi input, select, hoặc textarea được focus */
+form input[type="text"]:focus, 
+form select:focus, 
+form textarea:focus {
+    border-color: #4CAF50; /* Đổi màu viền khi focus */
+    outline: none;
+}
+
+/* Textarea */
+form textarea {
+    resize: vertical; /* Chỉ cho phép thay đổi chiều cao */
+    height: 100px;
+}
+
+/* Hình ảnh sản phẩm */
+form img {
+    display: block;
+    margin: 20px auto; /* Căn giữa hình ảnh */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    max-width: 220px; 
+    max-height: 220px;
+    object-fit: cover; /* Đảm bảo giữ tỉ lệ hình ảnh */
+}
+
+/* Nút submit */
+form button {
+    width: 100%;
+    padding: 14px;
+    background-color: #4CAF50; /* Màu xanh lá nổi bật */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase; /* Chữ in hoa */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+    background-color: #45a049; /* Màu xanh đậm hơn khi hover */
+    transform: translateY(-2px); /* Nổi lên nhẹ khi hover */
+}
+
+/* Chỉnh khoảng cách giữa các option trong select */
+form select option {
+    padding: 5px;
+}
+/* chỉnh file upload */
+/* Ẩn input file gốc */
+input[type="file"] {
+    display: none;
+}
+h2 {
+    margin-right: 10px;
+    font-size: 30px;
+    padding-top: 10px;
+}
+/* Tạo kiểu cho label tùy chỉnh */
+.custom_file_upload {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: white;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left; /* Căn chữ về lề trái */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-right: 500px; /* Đảm bảo không có margin trái */
+}
+
+/* Hiệu ứng hover cho nút upload */
+.custom_file_upload:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Hiển thị tên file đã chọn */
+#file_name {
+    margin: 5px 0; /* Giảm margin chỉ còn trên và dưới */
+    font-size: 14px;
+    color: #555;
+    font-style: italic;
+    text-align: left; /* Căn chữ về lề trái */
+    margin-right: 500px; 
+}
+

@@ -21,6 +21,14 @@ main {
     text-align: center;
 }
 
+hr {
+    border: 0;
+    border-top: 2px dashed #4CAF50;
+    border-bottom: 2px dotted #45a049;
+    margin: 20px 0;
+}
+
+
 /* Header */
 header {
     background-color: #4CAF50;
@@ -344,6 +352,7 @@ td:last-child, th:last-child {
     cursor: pointer;
     font-size: 7px;
     font-weight: bold;
+    text-align: center;
 }
 
 .edit_button:hover {

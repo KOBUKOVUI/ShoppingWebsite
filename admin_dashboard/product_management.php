@@ -80,7 +80,13 @@ $total_quantity = $row['total_quantity'];
                 <button type="submit" class="search_btn"><i class="fa fa-search"></i> <!-- Icon kính lúp --></button>
             </form>
         </section>
-        
+        <br>
+        <?php
+        if (isset($_SESSION['error_message'])) {
+                    echo "<p style='color: red; font-size: 20px; text-align: left; font-weight: bold'>" . $_SESSION['error_message'] . "</p> <br>";
+                    unset($_SESSION['error_message']);  // Xóa thông báo lỗi
+                }
+        ?>
         <section class="button_container">
             <a href="add_product.php">
                 <button class="custom_button">ADD NEW</button>
@@ -163,11 +169,12 @@ $total_quantity = $row['total_quantity'];
                     echo "<td class='td_edit'>
                             <form action='edit_product.php' method='POST'>
                                 <input type='hidden' name='product_id' value='" . $row['product_id'] . "'>
-                                <input type='submit' value='Edit' class='edit_button'>
+                                <input type='submit' value='Edit' class='edit_button' style='text-align: center'>
+                                </input>
                             </form>
-                            <form action='delete_product.php' method='POST'>
+                            <form action='delete_product.php' method='POST' onsubmit='return confirmDelete();'>
                                 <input type='hidden' name='product_id' value='" . $row['product_id'] . "'>
-                                <input type='submit' value='Delete' class='edit_button'>
+                                <input type='submit' value='Delete' class='edit_button' style='text-align: center'>
                             </form>
                           </td>";
 
@@ -215,3 +222,10 @@ $total_quantity = $row['total_quantity'];
     <?php include '../includes/footer.php'; ?>
 </body>
 </html>
+
+<!-- js xác nhận xóa -->
+<script type="text/javascript">
+    function confirmDelete() {
+        return confirm('Are you sure you want to delete this product?');
+    }
+</script>
