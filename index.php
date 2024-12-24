@@ -5,7 +5,7 @@ ini_set('session.cookie_httponly', 1); // Ngăn truy cập cookie qua JavaScript
 ini_set('session.cookie_samesite', 'Strict'); // Cấm gửi cookie trong các yêu cầu từ trang web khác
 session_start();
 
-// Kiểm tra xem người dùng đã đăng nhập chưa
+//Xác thực người dùng
 if (isset($_SESSION['verified']) && $_SESSION['verified'] == true) {
     if (($_SESSION['role'] == 'admin') ) {
         // Nếu là admin đã đăng nhập, chuyển hướng tới trang admin dashboard

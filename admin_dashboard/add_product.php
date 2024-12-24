@@ -21,16 +21,6 @@ if ($result->num_rows > 0) {
         $categories[] = $row;
     }
 }
-
-// Lấy danh sách sizes
-$sizes = [];
-$sql_sizes = "SELECT id, size FROM sizes";
-$result_sizes = $conn->query($sql_sizes);
-if ($result_sizes->num_rows > 0) {
-    while ($row = $result_sizes->fetch_assoc()) {
-        $sizes[] = $row;
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -68,17 +58,6 @@ if ($result_sizes->num_rows > 0) {
                         </option>
                     <?php endforeach; ?>
                 </select>
-
-                
-                <label for="size">Size:</label>
-                <select name="size_id" id="size" required>
-                    <option value="">-- Select a Size --</option>
-                    <?php foreach ($sizes as $size): ?>
-                        <option value="<?= htmlspecialchars($size['id'], ENT_QUOTES, 'UTF-8'); ?>">
-                            <?= htmlspecialchars($size['size'], ENT_QUOTES, 'UTF-8'); ?>
-                        </option>
-                        <?php endforeach; ?>
-                    </select>
                     
                     <label for="brand">Brand:</label>
                     <select name="brand" id="brand" onchange="updateColorBox()" required>

@@ -16,9 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $product_id = intval($_POST['product_id']);
     $name = htmlspecialchars(trim($_POST['name']), ENT_QUOTES, 'UTF-8');
     $category_id = intval($_POST['category_id']);
-    $price = floatval(str_replace(',', '', $_POST['price'])); // Loại bỏ dấu ',' trước khi ép thành số
+    $price = htmlspecialchars(intval(str_replace('.', '', $_POST['price']))); // Loại bỏ dấu chấm
     $brand = htmlspecialchars(trim($_POST['brand']), ENT_QUOTES, 'UTF-8');
     $description = htmlspecialchars(trim($_POST['description']), ENT_QUOTES, 'UTF-8');
+    $stock = $_POST['stock'];
     $errors = [];
     $image = '';
 
@@ -88,12 +89,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         category_id = ?, 
         price = ?, 
         brand = ?, 
-        description = ?, 
+        description = ?,
+        stock = ?,
         image_url = ? 
         WHERE id = ?
     ";
     $stmt = $conn->prepare($sql_update);
-    $stmt->bind_param("sissssi", $name, $category_id, $price, $brand, $description, $image, $product_id);
+    $stmt->bind_param("sisssisi", $name, $category_id, $price, $brand, $description, $stock, $image, $product_id);
 
     if ($stmt->execute()) {
         echo "<script>

@@ -1,0 +1,213 @@
+/* Reset mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: monospace;
+    background-color: rgb(232, 230, 230);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Chiều cao tối thiểu của body là chiều cao màn hình */
+}
+
+/* Main (Nội dung chính) */
+main {
+    flex: 1; /* Phần main sẽ chiếm không gian còn lại giữa header và footer */
+    padding: 20px;
+    text-align: center;
+}
+
+/* Header */
+header {
+    background-color: #4caf50;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 50px;
+    padding-bottom: 20px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 5px 10px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: white;
+}
+
+#header_logout {
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#header_logout:hover {
+    text-decoration: underline;
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    position: relative; /* Đảm bảo không ảnh hưởng đến bố cục Flexbox */
+}
+
+footer a {
+    color: aqua;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Main content container */
+main {
+    flex: 1;
+    padding: 30px;
+    text-align: center;
+    max-width: 1100px;
+    margin: 40px auto;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Product detail container */
+.product_detail {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    padding: 30px;
+    align-items: flex-start;
+}
+
+/* Product image styling */
+.product_detail img {
+    width: 100%; /* Chiều rộng đầy đủ so với container (form) */
+    max-width: 300px; /* Đặt giới hạn chiều rộng tối đa */
+    height: auto; /* Tự động điều chỉnh chiều cao để giữ tỷ lệ */
+    display: block; /* Đảm bảo hình ảnh không bị inline */
+    margin: 0 auto 15px; /* Căn giữa hình ảnh trong container và thêm khoảng cách bên dưới */
+    border-radius: 10px; /* Góc bo tròn */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ */
+    object-fit: cover;
+}
+
+/* Product information styling */
+.product_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20px;
+    flex: 1;
+}
+
+.product_info h2 {
+    margin: 0 0 20px;
+    font-size: 32px;
+    color: #2c3e50;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.product_info .brand,
+.product_info .category {
+    font-size: 20px;
+    font-weight: 500;
+    color: #7f8c8d;
+}
+
+.product_info .price {
+    font-size: 30px;
+    font-weight: bold;
+    color: #e74c3c;
+    margin: 10px 0;
+}
+
+.product_info .description {
+    margin: 20px 0;
+    font-size: 18px;
+    color: #7f8c8d;
+    line-height: 1.6;
+}
+
+/* Form styling */
+form {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Sửa lại phần label và input của quantity */
+form .quantity_container {
+    display: flex;
+    align-items: center; /* Căn chỉnh theo chiều dọc */
+    gap: 15px; /* Khoảng cách giữa label và input */
+}
+
+form label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+form input[type="number"] {
+    width: 60px;
+    padding: 12px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+form input[type="number"]:focus {
+    border-color: #57bd57;
+    outline: none;
+}
+
+form button {
+    padding: 14px 30px;
+    background-color: #57bd57;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+form button:hover {
+    background-color: #4cae4c;
+    transform: scale(1.05);
+}

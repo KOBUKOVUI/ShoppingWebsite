@@ -74,13 +74,7 @@ $total_quantity = $row['total_quantity'];
     <?php include '../includes/admin_header.php'; ?>
 
     <main>
-        <section>
-            <form class="search_container" action="search_product.php" method="POST">
-                <input type="text" id="search_product" name="query" placeholder="Search products..." class="search_input" required>
-                <button type="submit" class="search_btn"><i class="fa fa-search"></i> <!-- Icon kính lúp --></button>
-            </form>
-        </section>
-        <br>
+        
         <?php
         if (isset($_SESSION['error_message'])) {
                     echo "<p style='color: red; font-size: 20px; text-align: left; font-weight: bold'>" . $_SESSION['error_message'] . "</p> <br>";
@@ -151,7 +145,6 @@ $total_quantity = $row['total_quantity'];
                         <th class="th_stock">Stock</th>
                         <th class="th_product">Image</th>
                         <th class="th_edit">Edit</th>
-                        <th class="th_update_stock">Update Stock</th>
                     </tr>';
                 echo "</thead><tbody>";
 
@@ -178,35 +171,7 @@ $total_quantity = $row['total_quantity'];
                             </form>
                           </td>";
 
-                    // Cột nhập stock mới với size
-                    echo "<td class='td_update_stock'>
-                            <form action='update_stock.php' method='POST' id='update_stock_form'>
-                                <input type='hidden' name='product_id' value='" . $row['product_id'] . "'>";
-
-                    // Lấy tất cả sizes
-                    $size_query = "SELECT * FROM sizes";  // Giả sử có bảng sizes
-                    $size_result = $conn->query($size_query);
-
-                    // Hiển thị dropdown để chọn size và nhập số lượng
-                    echo "<div class='size_input'>
-                            <label for='size'>Choose Size:</label>
-                            <select name='size_id' id='size' required>
-                                <option value=''>Select Size</option>"; // Mặc định chọn không có size
-                    while ($size = $size_result->fetch_assoc()) {
-                        echo "<option value='" . $size['id'] . "'>" . htmlspecialchars($size['size']) . "</option>";
-                    }
-                    echo "</select>
-                        </div>";
-
-                    echo "<div class='quantity_input'>
-                            <label for='quantity'>Quantity:</label>
-                            <input type='number' name='quantity' id='quantity' min='0' value='0' required>
-                        </div>";
-
-                    echo "<input type='submit' value='Update Stock' class='update_stock_button'>
-                        </form>
-                    </td>";
-                    echo "</tr>";
+                    
                 }
 
                 echo "</tbody></table>";

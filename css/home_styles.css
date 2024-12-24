@@ -83,3 +83,138 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+
+/* CSS for product card */
+/* Cấu trúc lưới sản phẩm */
+.product_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 30px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Thẻ sản phẩm */
+.product_card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative; /* Để chứa các thành phần có thể chồng lên */
+}
+
+.product_card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Ảnh sản phẩm */
+.product_card img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.product_card:hover img {
+    transform: scale(1.05); /* Phóng to nhẹ ảnh khi hover */
+}
+
+/* Tên sản phẩm */
+.product_card h3 {
+    font-size: 20px;
+    color: #333;
+    margin: 10px 0;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Thương hiệu */
+.product_card .brand {
+    font-size: 14px;
+    color: #4CAF50;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Giá sản phẩm */
+.product_card .price {
+    font-size: 18px;
+    color: #e63946;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Nút Xem chi tiết */
+.view_button {
+    display: inline-block;
+    padding: 8px 15px;
+    color: #fff;
+    background-color: #4CAF50; /* Màu đồng bộ với header */
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.view_button:hover {
+    background-color: #45a049;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.product_card img {
+    width: 100%; /* Chiều rộng bằng 100% thẻ chứa */
+    height: 200px; /* Đặt chiều cao cố định cho ảnh */
+    object-fit: cover; /* Cắt ảnh để lấp đầy kích thước mà không bị méo */
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.product_card img {
+    width: 100%; /* Chiều rộng bằng 100% thẻ chứa */
+    height: 250px; /* Đặt chiều cao cố định cho ảnh */
+    object-fit: contain; /* Cắt ảnh để lấp đầy kích thước mà không bị méo */
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* Đồng nhất header và footer */
+header, footer {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.product_image {
+    width: 10%; /* Chiều rộng đầy đủ so với container (form) */
+    max-width: 300px; /* Đặt giới hạn chiều rộng tối đa */
+    height: auto; /* Tự động điều chỉnh chiều cao để giữ tỷ lệ */
+    display: block; /* Đảm bảo hình ảnh không bị inline */
+    margin: 0 auto 15px; /* Căn giữa hình ảnh trong container và thêm khoảng cách bên dưới */
+    border-radius: 10px; /* Góc bo tròn */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ */
+    object-fit: cover;
+}

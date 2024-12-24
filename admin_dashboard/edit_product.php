@@ -84,6 +84,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                         <option value="puma">Puma</option>
                     </select>
 
+                    <label for="stock">Stock:</label>
+                    <input type="number" name="stock" id="stock" required min="0">     
+                               
                     <label for="description">Description:</label>
                     <textarea name="description" id="description" rows="5"><?php echo $row['description'] ?> </textarea>
                     <?php echo "<img src='" . $row['image_url'] . "' alt='Product Image'>"; ?>
