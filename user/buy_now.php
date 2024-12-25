@@ -57,13 +57,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'], $_POST[
             <p><strong>Total:</strong> <span class="total_price"><?= number_format($product['price'] * $quantity, 0, ',', '.'); ?> VNĐ</span></p>
 
         </div>
-        <form action="buy_now_process.php" method="POST">
+        <form action="payment.php" method="POST">
             <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['id'], ENT_QUOTES, 'UTF-8'); ?>">
             <input type="hidden" name="quantity" value="<?= htmlspecialchars($quantity, ENT_QUOTES, 'UTF-8'); ?>">
             
             <div class="form_group">
                 <label for="name">Full name:</label>
-                <textarea id="name" name="name" rows="4" required></textarea>
+                <textarea id="name" name="name" rows="2" required></textarea>
             </div>
             <div class="form_group">
                 <label for="address">Address:</label>
