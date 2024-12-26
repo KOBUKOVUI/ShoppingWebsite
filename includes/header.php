@@ -12,7 +12,7 @@
         <nav>
             <a href="home.php">Home</a>
             <a href="edit_account.php">Account management</a>
-            <a href="orders.php">Orders</a>
+            <a href="user_orders.php">Orders</a>
             <a id = "header_logout" href = '../auth/logout.php'>Log out</a>
         </nav>
     </header>

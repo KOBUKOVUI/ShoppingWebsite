@@ -30,9 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'], $_POST[
             $order_id = $order_stmt->insert_id; 
 
             // Thêm vào bảng order_items
-            $item_stmt = $conn->prepare("INSERT INTO order_items (order_id, quantity, price, total) VALUES (?, ?, ?, ?)");
+            $item_stmt = $conn->prepare("INSERT INTO order_items (order_id, product_id, quantity, price, total) VALUES (?, ?, ?, ?, ?)");
             $item_total = $product['price'] * $quantity;
-            $item_stmt->bind_param("iidd", $order_id, $quantity, $product['price'], $item_total);
+            $item_stmt->bind_param("iiidd", $order_id, $product_id, $quantity, $product['price'], $item_total);
             $item_stmt->execute();
 
             $product_stmt = $conn->prepare("UPDATE products SET stock = stock - ? WHERE id = ?");
