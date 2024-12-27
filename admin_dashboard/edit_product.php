@@ -63,14 +63,17 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     <input type="text" id="name" name="name" value="<?= $row['name']?>" required>
 
                     <label for="category">Category:</label>
-                        <select name="category_id" id="category" required>
-                        <option value=""> <?php echo $row['category_name']; ?> </option>
-                            <?php foreach ($categories as $category): ?>
-                            <option value="<?= htmlspecialchars($category['id'], ENT_QUOTES, 'UTF-8'); ?>">
-                            <?= htmlspecialchars($category['name'], ENT_QUOTES, 'UTF-8'); ?>
+                    <select name="category_id" id="category" required>
+                        <?php foreach ($categories as $category): ?>
+                            <option value="<?= htmlspecialchars($category['id'], ENT_QUOTES, 'UTF-8'); ?>" 
+                                    <?= $category['id'] == $row['category_id'] ? 'selected' : ''; ?>>
+                                <?= htmlspecialchars($category['name'], ENT_QUOTES, 'UTF-8'); ?>
                             </option>
-                            <?php endforeach; ?>
-                </select>
+                        <?php endforeach; ?>
+                    </select>
+
+
+
 
                     <label for="price">Price (VNĐ)</label>
                     <?php $price = number_format($row['price'], 0, ',', '.'); ?>
@@ -78,14 +81,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     
                     <label for="brand">Brand:</label>
                     <select name="brand" id="brand" required>
-                        <option value=""> <?php echo $row['brand'] ?> </option>
-                        <option value="nike">Nike</option>
-                        <option value="addidas">Addidas</option>
-                        <option value="puma">Puma</option>
+                        <option value="nike" <?= $row['brand'] === 'nike' ? 'selected' : ''; ?>>Nike</option>
+                        <option value="addidas" <?= $row['brand'] === 'addidas' ? 'selected' : ''; ?>>Addidas</option>
+                        <option value="puma" <?= $row['brand'] === 'puma' ? 'selected' : ''; ?>>Puma</option>
                     </select>
 
+
                     <label for="stock">Stock:</label>
-                    <input type="number" name="stock" id="stock" required min="0">     
+                    <input type="number" name="stock" id="stock" value="<?= htmlspecialchars($row['stock'], ENT_QUOTES, 'UTF-8'); ?>" required min="0">
+     
                                
                     <label for="description">Description:</label>
                     <textarea name="description" id="description" rows="5"><?php echo $row['description'] ?> </textarea>
