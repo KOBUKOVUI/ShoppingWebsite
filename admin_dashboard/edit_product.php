@@ -57,7 +57,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     <main >
             <div class="form_container">
                 <h1>EDIT PRODUCT</h1>
-                <form action="edit_product_process.php" method="POST" enctype="multipart/form-data">
+                <form action="edit_product_process.php" method="POST" enctype="multipart/form-sdata">
                     <input type="hidden" id="product_id" name="product_id" value="<?= $row['id']?>">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" value="<?= $row['name']?>" required>

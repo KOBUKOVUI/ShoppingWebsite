@@ -208,3 +208,48 @@ button {
 button:hover {
     background-color: #004999;
 }
+
+/* Button styles */
+.form_container_cod .btn,
+.form_container_momo .btn {
+    display: inline-block;
+    width: 100%;
+    padding: 12px 20px;
+
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+/* COD Button */
+.form_container_cod .btn {
+    background-color: #7688ce;
+    color: #ffffff;
+    max-width: 500px;
+}
+
+.form_container_cod .btn:hover {
+    background-color: #457b9d;
+}
+
+/* MoMo Button */
+.form_container_momo .btn {
+    background-color: #ff4d9a;
+    color: #ffffff;
+    max-width: 500px;
+}
+
+.form_container_momo .btn:hover {
+    background-color: #d90368;
+}
+
+/* Add some spacing */
+.form_container_cod,
+.form_container_momo {
+    margin-bottom: 20px;
+}
+
